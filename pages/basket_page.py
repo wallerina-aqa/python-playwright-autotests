@@ -18,4 +18,4 @@ class BasketPage(BasePage):
 
     @allure.step("Assert basket has message that it is empty")
     def assert_basket_empty_message(self):
-        expect(self.EMPTY_BASKET_MESSAGE).to_be_visible()
+        expect(self.EMPTY_BASKET_MESSAGE).to_be_visible(timeout=self.TIMEOUT)

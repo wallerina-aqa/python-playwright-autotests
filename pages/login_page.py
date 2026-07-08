@@ -12,7 +12,7 @@ faker = Faker()
 class LoginPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
-        self.URL_ENDPOINT = "accounts/login/"
+        self.URL_ENDPOINT = "/accounts/login/"
         self.URL = self.BASE_URL + self.URL_ENDPOINT
 
         self.LOGIN_FORM = self.PAGE.locator("#login_form")
@@ -36,15 +36,17 @@ class LoginPage(BasePage):
 
     @allure.step("Assert Login page url")
     def should_be_login_url(self):
-        expect(self.PAGE).to_have_url(re.compile(f"{self.URL_ENDPOINT}$"))
+        expect(self.PAGE).to_have_url(
+            re.compile(f"{self.URL_ENDPOINT}$"), timeout=self.TIMEOUT
+        )
 
     @allure.step("Assert page contains login form")
     def should_be_login_form(self):
-        expect(self.LOGIN_FORM).to_be_visible()
+        expect(self.LOGIN_FORM).to_be_visible(timeout=self.TIMEOUT)
 
     @allure.step("Assert page contains register form")
     def should_be_register_form(self):
-        expect(self.REGISTER_FORM).to_be_visible()
+        expect(self.REGISTER_FORM).to_be_visible(timeout=self.TIMEOUT)
 
     def should_be_login_page(self):
         self.should_be_login_url()
@@ -61,4 +63,4 @@ class LoginPage(BasePage):
         self.REGISTRATION_FORM_CONFIRM_PASSWORD_INPUT.fill(new_user_password)
         self.SUBMIT_REGISTRATION_BUTTON.click()
 
-        expect(self.THANKS_FOR_REGISTRATION_ALERT).to_be_visible()
+        expect(self.THANKS_FOR_REGISTRATION_ALERT).to_be_visible(timeout=self.TIMEOUT)

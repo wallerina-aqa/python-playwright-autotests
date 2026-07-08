@@ -27,7 +27,7 @@ class ProductPage(BasePage):
 
     @allure.step("Assert success alert is displayed")
     def assert_success_alert(self):
-        expect(self.SUCCESS_ALERT).to_be_visible()
+        expect(self.SUCCESS_ALERT).to_be_visible(timeout=self.TIMEOUT)
 
     @allure.step("Assert success alert is not displayed")
     def assert_success_alert_absence(self):
@@ -37,12 +37,14 @@ class ProductPage(BasePage):
 
     @allure.step("Check product name in successful message")
     def assert_product_name_matches_original_product_name(self):
-        expect(self.SUCCESS_ALERT).to_have_text(self.PRODUCT_NAME.inner_text())
+        expect(self.SUCCESS_ALERT).to_have_text(
+            self.PRODUCT_NAME.inner_text(), timeout=self.TIMEOUT
+        )
 
     @allure.step("Check product price in successful alert")
     def assert_product_price_matches_original_product_price(self):
         expect(self.PRODUCT_PRICE_IN_SUCCESS_ALERT).to_have_text(
-            self.PRODUCT_PRICE.inner_text()
+            self.PRODUCT_PRICE.inner_text(), timeout=self.TIMEOUT
         )
 
     def assert_basket_messages(self):
