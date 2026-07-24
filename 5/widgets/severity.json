@@ -1,0 +1,1 @@
+[{"uid":"881c6cda1d321f68","name":"Guest can go to Login page from Main page","time":{"start":1783108633314,"stop":1783108634805,"duration":1491},"status":"passed","severity":"normal"},{"uid":"d4b8ac5a251a393","name":"Guest should see login link on Main page","time":{"start":1783108633335,"stop":1783108634625,"duration":1290},"status":"passed","severity":"normal"}]
